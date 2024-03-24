@@ -9,7 +9,7 @@
         <div id="shopping-list">
             <h1>{{header || 'Welcome'}}</h1>
             <ul>
-                <li v-for="(item, index) in items" ::key="item.id">{{index}} . {{item.label}}</li>
+                <li v-for="(item, key) in items" ::key="item.id">{{key}} . {{item.label}}</li>
             </ul>
         </div>
 
@@ -19,11 +19,16 @@
                 data() {
                     return {
                         header: "Shopping List App",
-                        items: [
-                            {id: 1, label: "10 Party Hats"},
-                            {id: 2, label: "2 Board Games"},
-                            {id: 3, label: "20 Cups"}
-                        ]
+                        // items: [
+                        //     {id: 1, label: "10 Party Hats"},
+                        //     {id: 2, label: "2 Board Games"},
+                        //     {id: 3, label: "20 Cups"}
+                        // ],
+                        items: {
+                            'item-1': {id: 1, label: "10 Party Hats"},
+                            'item-2': {id: 2, label: "2 Board Games"},
+                            'item-3': {id: 3, label: "20 Cups"}
+                        }
                     }
                 }
             })
