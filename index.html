@@ -8,31 +8,73 @@
 	<body>
 		<div id="shopping-list">
 			<h1>{{header || 'Welcome'}}</h1>
-			<input v-model="newItem" type="text" placeholder="1 awesome vue course!" >
-			<label><input type="radio" v-model="newItemPriority" value="low">Low</label>
-			<label><input type="radio" v-model="newItemPriority" value="high">High</label>
+
+			<!-- Text -->
+			<fieldset>
+				<legend>Textbox</legend>
+				<input v-model="newItem" type="text" placeholder="1 awesome vue course!" >
+			</fieldset>
 			<br/>
-			{{newItem}}{{newItemPriority}}
-			<ul>
-					<li v-for="item in items" ::key="item.id">{{item.label}}</li>
-			</ul>
+
+			<!-- Radio Buttons -->
+			<fieldset>
+				<legend>Radiobutton</legend>
+				<label><input type="radio" v-model="newItemPriority" value="low">Low</label>
+				<label><input type="radio" v-model="newItemPriority" value="high">High</label>
+			</fieldset>
+			<br/>
+
+			<!-- Select -->
+			<fieldset>
+				<legend>Select</legend>
+				<label>
+					Priority
+					<select v-model="newItemPriority">
+						<option value="low">Low</option>
+						<option value="high">High</option>
+					</select>
+				</label>
+			</fieldset>
+			<br/>
+
+			<!-- Checkbox -->
+			<fieldset>
+				<legend>Checkbox</legend>
+				<label><input type="checkbox" v-model="newItemHighPriority">High Priority</label>
+			</fieldset>
+			<br/>
+
+			<fieldset>
+				<legend>Debug Variables</legend>
+				<p>newItem: {{newItem}}</p>
+				<p>newItemPriority: {{newItemPriority}}</p>
+				<p>newItemHighPriority: {{newItemHighPriority}}</p>
+			</fieldset>
+
+			<fieldset>
+				<legend>List</legend>
+				<ul>
+						<li v-for="item in items" ::key="item.id">{{item.label}}</li>
+				</ul>
+			</fieldset>
 		</div>
 
 		<script src="https://unpkg.com/vue@3"></script>
 		<script>
 			const shoppingList = Vue.createApp({
-					data() {
-							return {
-									header: "Shopping List App",
-									newItem: '',
-									newItemPriority: 'low',
-									items: [
-											{id: 1, label: "10 Party Hats"},
-											{id: 2, label: "2 Board Games"},
-											{id: 3, label: "20 Cups"}
-									],
-							}
+				data() {
+					return {
+						header: "Shopping List App",
+						newItem: '',
+						newItemPriority: 'low',
+						newItemHighPriority: false,
+						items: [
+								{id: 1, label: "10 Party Hats"},
+								{id: 2, label: "2 Board Games"},
+								{id: 3, label: "20 Cups"}
+						],
 					}
+				}
 			})
 			.mount('#shopping-list')
 		</script>
